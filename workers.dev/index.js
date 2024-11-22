@@ -14,9 +14,9 @@ Disallow: /
    return new Response(robots,{ status: 200 });
   }
 
-  const targetDomain = 'www.proxysites.ai';
-  const origin = `https://${targetDomain}`; 
-  const actualUrl = new URL(`${origin}${pathname}${url.search}${url.hash}`); 
+  const targetDomain = 'www.shuju008.com';
+  const origin = `https://${targetDomain}`;
+  const actualUrl = new URL(`${origin}${pathname}${url.search}${url.hash}`);
 
   const modifiedRequestInit = {
     method: request.method,
@@ -42,11 +42,14 @@ Disallow: /
 
     // Replace all instances of the proxy site domain with the current host domain in the text
     text = text.replace(new RegExp( `(//|https?://)${targetDomain}`, 'g'), `$1${host}` );
+    text = text.replace(/SJB平台/gi, '');
+    text = text.replace(/SJB platform /gi, '');
+    text = text.replace(/sjb.pdf/gi, 'sjb01.pdf');
     body = new TextEncoder().encode(text).buffer;
   }
 
   const modifiedResponse = new Response(body, response);
   modifiedResponse.headers.set('Access-Control-Allow-Origin', '*');
-  return modifiedResponse; 
- 
+  return modifiedResponse;
 }
+

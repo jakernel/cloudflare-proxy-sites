@@ -1,12 +1,12 @@
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request));
 });
- 
+
 const getTargetDomain = (host, rootDomain) => {
-  return host.split(`.${rootDomain}`)[0]; 
+  return host.split(`.${rootDomain}`)[0];
 }
- 
-const ownDomain = "serp.ing";
+
+const ownDomain = "irenfeng.com";
 
 async function handleRequest(request) {
   const url = new URL(request.url);
@@ -19,9 +19,9 @@ Disallow: /
    return new Response(robots,{ status: 200 });
   }
 
-  const targetDomain = getTargetDomain(host, ownDomain); 
-  const origin = `https://${targetDomain}`; 
-  const actualUrl = new URL(`${origin}${pathname}${url.search}${url.hash}`); 
+  const targetDomain = getTargetDomain(host, ownDomain);
+  const origin = `https://${targetDomain}`;
+  const actualUrl = new URL(`${origin}${pathname}${url.search}${url.hash}`);
 
   const modifiedRequestInit = {
     method: request.method,
@@ -52,6 +52,6 @@ Disallow: /
 
   const modifiedResponse = new Response(body, response);
   modifiedResponse.headers.set('Access-Control-Allow-Origin', '*');
-  return modifiedResponse; 
- 
+  return modifiedResponse;
 }
+
