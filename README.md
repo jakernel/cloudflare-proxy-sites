@@ -1,3 +1,10 @@
+# 注意事项
+不要反代大站，尤其是 netcraft 的客户网站，可能会被投诉钓鱼欺诈，导致封号
+- 目前单站点使用 sjb01.cc 域名反代了 www.shuju008.com
+单独使用 workers.dev 子目录部署单站点
+- 多站点使用 astrowind.vercel.app.irenfeng.com 反代了 astrowind.vercel.app
+多站点可在 cf 后台添加域名的方式，增加新的需要反代的站点
+
 # Cloudflare Proxy Sites
 
 A powerful and easy-to-use website mirroring tool based on Cloudflare Workers.
@@ -58,7 +65,7 @@ Code: [index.js](index.js)
 
 ![www.proxysites.ai.serp.ing.png](images/www.proxysites.ai.serp.ing.png)
 
-## Local Deploy 
+## Local Deploy
 
 ### 1. install `wrangler`
 
@@ -130,7 +137,7 @@ For detailed instructions, see [this guide](workers.dev/README.md)
 
 ## Configure Workers for Proxy Site
 
-eg. 
+eg.
 
 My root domain is `serp.ing`,
 
@@ -161,7 +168,7 @@ Ensure the certificate is active.
 
 ## 🤖 robots.txt Configuration
 
-Default configuration (recommended for privacy): 
+Default configuration (recommended for privacy):
 
 ```js
 // index.js
